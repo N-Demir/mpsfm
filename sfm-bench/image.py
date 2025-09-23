@@ -28,7 +28,7 @@ modal_volumes: dict[str | PurePosixPath, Volume] = {
 }
 
 image = (
-    Image.from_registry("pytorch/pytorch:2.4.1-cuda12.1-cudnn9-devel")  # find others at: https://hub.docker.com/
+    Image.from_registry("mpsfm/mpsfm:latest")  # find others at: https://hub.docker.com/
     .env(
         {
             # Set Torch CUDA Compatbility to be for RTX 4090, T4, L40s, and A100
@@ -46,26 +46,7 @@ image = (
             rsync \
             git \
             wget \
-            unzip \
-            cmake \
-            build-essential \
-            ninja-build \
-            libglew-dev \
-            libassimp-dev \
-            libboost-all-dev \
-            libgtk-3-dev \
-            libopencv-dev \
-            libglfw3-dev \
-            libavdevice-dev \
-            libavcodec-dev \
-            libeigen3-dev \
-            libtbb-dev \
-            libopenexr-dev \
-            libxi-dev \
-            libxrandr-dev \
-            libxxf86vm-dev \
-            libxxf86dga-dev \
-            libxxf86vm-dev"
+            unzip"
     )
     # Install gsutil (for downloading datasets the first time)
     .apt_install("curl", "ca-certificates", "gnupg")
@@ -87,4 +68,5 @@ image = (
     # .run_commands("pip install submodules/diff-gaussian-rasterization")
     # .run_commands("pip install -e .")
     # Note: If your run_commands step needs access to a gpu it's actually possible to do that through "run_commands(gpu='L40S', ...)"
+    .entrypoint([])
 )
