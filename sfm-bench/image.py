@@ -27,6 +27,9 @@ modal_volumes: dict[str | PurePosixPath, Volume] = {
     "/sfm-bench": sfm_bench_volume,
 }
 
+def dummy_run():
+    os.system("python reconstruct.py")
+
 image = (
     Image.from_registry("mpsfm/mpsfm:latest")  # find others at: https://hub.docker.com/
     .env(
@@ -69,8 +72,9 @@ image = (
     # .run_commands("pip install -e .")
     # Note: If your run_commands step needs access to a gpu it's actually possible to do that through "run_commands(gpu='L40S', ...)"
     .entrypoint([])
-    .run_commands("git clone https://github.com/N-Demir/mpsfm.git --recursive .")
+    .run_commands("git clone https://github.com/N-Demir/mpsfm.git --recursive .", force_build=True)
     .run_commands("pip install -e .")
     # Dummy Run
-    .run_commands("python reconstruct.py", gpu="L4") # This is failing due to a shared memory error or something
+    # .run_commands("python reconstruct.py", gpu="L4") # This is failing due to a shared memory error or something
+    .run_function(dummy_run, gpu="L4")
 )
