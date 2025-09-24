@@ -15,4 +15,9 @@ python reconstruct.py \
     --conf sp-lg_m3dv2 \
     --data_dir $output_folder \
     --refrec_dir $output_folder/sparse_gt/0
-    # --images_dir $output_folder/images
+
+# Don't need this because we actually changed the code to by default do {data_dir}/images    
+# --images_dir $output_folder/images
+
+mkdir -p $output_folder/sparse
+mv $output_folder/sfm_outputs/rec $output_folder/sparse/0

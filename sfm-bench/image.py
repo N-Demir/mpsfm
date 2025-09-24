@@ -29,6 +29,7 @@ modal_volumes: dict[str | PurePosixPath, Volume] = {
 }
 
 def dummy_run():
+    # Avoids a shared memory pytorch DataLoader error when running with run_commands
     os.system("python reconstruct.py")
 
 image = (
@@ -76,6 +77,5 @@ image = (
     .run_commands("git clone https://github.com/N-Demir/mpsfm.git --recursive .", force_build=True)
     .run_commands("pip install -e .")
     # Dummy Run
-    # .run_commands("python reconstruct.py", gpu="L4") # This is failing due to a shared memory error or something
-    .run_function(dummy_run, gpu="L4")
+    .run_function(dummy_run, gpu="L4") # Avoids a shared memory pytorch DataLoader error when running with run_commands
 )

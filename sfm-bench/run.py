@@ -46,7 +46,7 @@ def log_time(log_file: str):
 
 @app.function(
     timeout=3600 * 8,
-    gpu="A100-80GB",
+    gpu="L40S",
 )
 def eval(data: str):
     data_folder = Path(f"/sfm-bench/data/{data}/")
