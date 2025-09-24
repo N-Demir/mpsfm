@@ -74,7 +74,7 @@ image = (
     # .run_commands("pip install -e .")
     # Note: If your run_commands step needs access to a gpu it's actually possible to do that through "run_commands(gpu='L40S', ...)"
     .entrypoint([])
-    .run_commands("git clone https://github.com/N-Demir/mpsfm.git --recursive .", force_build=True)
+    .run_commands("git clone https://github.com/N-Demir/mpsfm.git --recursive .")
     .run_commands("pip install -e .")
     # Dummy Run
     .run_function(dummy_run, gpu="L4") # Avoids a shared memory pytorch DataLoader error when running with run_commands

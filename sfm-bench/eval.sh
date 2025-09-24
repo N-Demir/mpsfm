@@ -20,4 +20,4 @@ python reconstruct.py \
 # --images_dir $output_folder/images
 
 mkdir -p $output_folder/sparse
-mv $output_folder/sfm_outputs/rec $output_folder/sparse/0
+cp -r $output_folder/sfm_outputs/rec $output_folder/sparse/0
