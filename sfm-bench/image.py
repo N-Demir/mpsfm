@@ -12,6 +12,7 @@ You might also want to change the `workdir` to keep it consistent with the Docke
 See their docs for more info: https://modal.com/docs/guide/images
 """
 
+import os
 from pathlib import Path, PurePosixPath
 
 from modal import Image, Volume
