@@ -24,6 +24,7 @@ class SimpleTest(BaseClass):
         extrinsics=False,
     ):
         data_dir = Path(data_dir)
+        images_dir = data_dir / "images"
 
         scene_parser = SimpleParser(
             data_dir=data_dir,
