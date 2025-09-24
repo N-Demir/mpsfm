@@ -399,18 +399,9 @@ def main():
     # Show estimated sizes first
     estimate_total_download_size()
     
-    # Ask for confirmation
     print("\n⚠️  This will download approximately 12+ GB of model files.")
     print("Make sure you have sufficient disk space and a stable internet connection.")
-    
-    try:
-        response = input("\nDo you want to continue? (y/N): ").strip().lower()
-        if response not in ['y', 'yes']:
-            print("Download cancelled.")
-            return
-    except KeyboardInterrupt:
-        print("\nDownload cancelled.")
-        return
+    print("Starting download automatically...")
     
     download_required_models(skip_large=args.skip_large)
 
