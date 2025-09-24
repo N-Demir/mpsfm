@@ -69,9 +69,8 @@ image = (
     # .run_commands("pip install -e .")
     # Note: If your run_commands step needs access to a gpu it's actually possible to do that through "run_commands(gpu='L40S', ...)"
     .entrypoint([])
-    .run_commands("git clone https://github.com/N-Demir/mpsfm.git --recursive .", force_build=True)
+    .run_commands("git clone https://github.com/N-Demir/mpsfm.git --recursive .")
     .run_commands("pip install -e .")
     # Dummy Run
-    # .run_commands("python reconstruct.py", gpu="L4") # This is failing due to a shared memory error or something
-    .run_commands("python download_models.py")
+    .run_commands("python reconstruct.py", gpu="L4") # This is failing due to a shared memory error or something
 )
